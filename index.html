@@ -3,124 +3,164 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TICE 2030 | Plateforme Pédagogique</title>
+    <title>Espace Élèves | TICE 2030</title>
     <style>
-        /* Couleurs inspirées du milieu éducatif et de Scratch */
         :root {
-            --tice-blue: #0056b3;
-            --scratch-orange: #ffab19;
-            --bg-light: #f4f7f6;
+            --primary: #007bff;
+            --secondary: #6c757d;
+            --success: #28a745;
+            --warning: #ffc107;
+            --light: #f8f9fa;
+            --dark: #343a40;
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--bg-light);
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background-color: #e9ecef;
             margin: 0;
-            color: #333;
+            padding: 0;
         }
 
         header {
-            background-color: var(--tice-blue);
+            background: var(--dark);
             color: white;
-            padding: 50px 20px;
+            padding: 2rem 1rem;
             text-align: center;
-            border-bottom: 5px solid var(--scratch-orange);
+            border-bottom: 4px solid var(--primary);
         }
 
         .container {
-            max-width: 900px;
-            margin: 30px auto;
+            max-width: 1100px;
+            margin: 20px auto;
             padding: 20px;
         }
 
-        .intro {
+        .welcome-msg {
             background: white;
             padding: 20px;
             border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             margin-bottom: 30px;
             text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
 
-        .grid {
+        h2 { color: var(--primary); border-bottom: 2px solid #ddd; padding-bottom: 10px; }
+
+        .section-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
         }
 
         .card {
             background: white;
-            padding: 20px;
-            border-radius: 10px;
-            border-top: 4px solid var(--tice-blue);
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.08);
+            transition: transform 0.3s;
         }
 
-        .card.scratch {
-            border-top-color: var(--scratch-orange);
-        }
+        .card:hover { transform: translateY(-5px); }
 
-        h2 { color: var(--tice-blue); }
-        
-        .btn {
-            display: inline-block;
-            margin-top: 15px;
-            padding: 10px 20px;
-            background-color: var(--tice-blue);
+        .card-header {
+            padding: 15px;
             color: white;
-            text-decoration: none;
-            border-radius: 5px;
             font-weight: bold;
-        }
-
-        .btn-scratch {
-            background-color: var(--scratch-orange);
-        }
-
-        footer {
+            font-size: 1.2rem;
             text-align: center;
-            margin-top: 50px;
-            padding: 20px;
-            font-size: 0.9em;
-            color: #666;
         }
 
-        /* Responsive pour mobile */
-        @media (max-width: 600px) {
-            .grid { grid-template-columns: 1fr; }
+        .bg-cours { background-color: var(--primary); }
+        .bg-apps { background-color: var(--success); }
+
+        .card-body { padding: 20px; }
+
+        .item-list { list-style: none; padding: 0; }
+        
+        .item-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
+
+        .btn-action {
+            text-decoration: none;
+            padding: 6px 12px;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            transition: 0.2s;
+        }
+
+        .btn-download { background: #007bff; color: white; }
+        .btn-launch { background: #28a745; color: white; }
+
+        footer { text-align: center; padding: 30px; color: #666; font-size: 0.9rem; }
+
+        @media (max-width: 600px) { .section-grid { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
 
 <header>
-    <h1>Projet TICE 2030</h1>
-    <p>L'informatique par l'investigation (Nahj al-Taqassi)</p>
+    <h1>TICE 2030 : Espace Numérique</h1>
+    <p>Consultez vos cours et lancez vos applications de codage</p>
 </header>
 
 <div class="container">
-    <div class="intro">
-        <h2>Bienvenue sur l'espace numérique</h2>
-        <p>Cette plateforme accompagne votre manuel pour maîtriser les outils numériques, la recherche web et la programmation.</p>
+    <div class="welcome-msg">
+        <h3>Bonjour chers élèves ! 👋</h3>
+        <p>Retrouvez ici tous les documents de la classe et les outils pour vos projets de programmation.</p>
     </div>
 
-    <div class="grid">
+    <div class="section-grid">
         <div class="card">
-            <h3>📚 Ressources PDF</h3>
-            <p>Téléchargez le manuel complet (50 pages) et les fiches d'activités pour la classe.</p>
-            <a href="manuel_tice_complet.pdf" class="btn">📥 Télécharger le Manuel</a>
+            <div class="card-header bg-cours">📚 Mes Cours (Consultation)</div>
+            <div class="card-body">
+                <ul class="item-list">
+                    <li>
+                        <span>Manuel TICE (Complet)</span>
+                        <a href="manuel_tice_complet.pdf" class="btn-action btn-download">Lire PDF</a>
+                    </li>
+                    <li>
+                        <span>Guide de Recherche Web</span>
+                        <a href="guide_recherche.pdf" class="btn-action btn-download">Ouvrir</a>
+                    </li>
+                    <li>
+                        <span>Lexique Informatique</span>
+                        <a href="lexique.pdf" class="btn-action btn-download">Voir</a>
+                    </li>
+                </ul>
+            </div>
         </div>
 
-        <div class="card scratch">
-            <h3>🐱 Ateliers Scratch</h3>
-            <p>Accédez aux projets de programmation : tracé de polygones et reportages animés.</p>
-            <a href="https://scratch.mit.edu" class="btn btn-scratch">🚀 Ouvrir Scratch</a>
+        <div class="card">
+            <div class="card-header bg-apps">💻 Applications & Outils</div>
+            <div class="card-body">
+                <ul class="item-list">
+                    <li>
+                        <span>Scratch en ligne</span>
+                        <a href="https://scratch.mit.edu/projects/editor/" target="_blank" class="btn-action btn-launch">Lancer</a>
+                    </li>
+                    <li>
+                        <span>Editeur WordPad (Tuto)</span>
+                        <a href="#tuto-wordpad" class="btn-action btn-launch">Apprendre</a>
+                    </li>
+                    <li>
+                        <span>Calculatrice Scientifique</span>
+                        <a href="https://www.google.com/search?q=calculatrice" target="_blank" class="btn-action btn-launch">Ouvrir</a>
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
 </div>
 
 <footer>
-    <p>&copy; 2026 Al3abkari Pro - Manuel TICE 2030 - Dr. ER-RAJY Mohammed</p>
+    <p>Plateforme développée par Dr. ER-RAJY Mohammed pour les élèves de 5ème et 6ème AP</p>
+    <p>&copy; 2026 Al3abkari-Pro</p>
 </footer>
 
 </body>
